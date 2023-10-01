@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Little Deer', sans-serif;
+    font-display: swap;
+}
+
+body {
+    background: darkcyan !important;
+    font-family: 'Little Deer', sans-serif !important;
+}
+
+.nav-title {
+    font-size: 30px !important;
+}
+
+.nav-item {
+    margin-top: 7px;
+    font-size: 20px;
+    color: deepskyblue;
+}
+
+.nav-title:hover, nav-item:hover {
+    color: deepskyblue !important;
+}
