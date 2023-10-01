@@ -22,15 +22,15 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/create-game">Create Game</a>
+                    <a class="nav-link {{ request()->is('create-game') ? 'active' : null }}" aria-current="page" href="/create-game">Create Game</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/find-game">Find Game</a>
+                    <a class="nav-link {{ request()->is('find-game') ? 'active' : null }}" href="/find-game">Find Game</a>
                 </li>
             </ul>
         </div>
     </div>
-    @yield('content')
 </nav>
+@yield('content')
 </body>
 </html>

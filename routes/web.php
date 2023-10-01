@@ -18,9 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/create-game', function () {
-    return view('main');
+    return view('game.create');
 });
 
 Route::get('/find-game', function () {
-    return view('main');
+    return view('game.find');
 });
