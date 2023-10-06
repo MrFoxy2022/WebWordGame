@@ -15,17 +15,17 @@
 <body class="text-light">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand nav-title" href="/">WordGame</a>
+        <a class="navbar-brand nav-title" href="/"><img src="{{ asset('images/logo.png') }}" height="60px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('create-game') ? 'active' : null }}" aria-current="page" href="/create-game">Create Game</a>
+                    <a class="nav-link {{ request()->is('games/create') ? 'active' : null }}" aria-current="page" href="/games/create">Create Game</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('find-game') ? 'active' : null }}" href="/find-game">Find Game</a>
+                    <a class="nav-link {{ request()->is('games') ? 'active' : null }}" href="/games">Find Game</a>
                 </li>
             </ul>
         </div>

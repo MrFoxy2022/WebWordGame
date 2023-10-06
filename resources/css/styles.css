@@ -1,11 +1,6 @@
-@font-face {
-    font-family: 'Little Deer', sans-serif;
-    font-display: swap;
-}
-
 body {
     background: darkslategrey !important;
-    font-family: 'Little Deer', sans-serif !important;
+    font-family: teko, sans-serif !important;
 }
 
 .nav-title {
@@ -15,9 +10,41 @@ body {
 .nav-item {
     margin-top: 7px;
     font-size: 20px;
-    color: deepskyblue;
+    color: darkslategrey;
 }
 
-.nav-title:hover, nav-item:hover {
-    color: deepskyblue !important;
+.letter:focus {
+    outline: none;
+}
+
+.page-link.active, .active>.page-link {
+    border-color: deepskyblue !important;
+}
+
+hr {
+    display: none;
+}
+
+.mobile-game-el {
+    font-size: 40px !important;
+    border-radius: 6px !important;
+}
+
+@media (max-width: 700px) {
+    .mobile-game {
+        width: 100% !important;
+    }
+    .mobile-game-el {
+        font-size: 30px !important;
+        border-radius: 3px !important;
+    }
+    hr {
+        display: block;
+    }
+    .start-word {
+        margin: 20px auto 0 !important;
+    }
+    .row-word {
+        width: 100% !important;
+    }
 }

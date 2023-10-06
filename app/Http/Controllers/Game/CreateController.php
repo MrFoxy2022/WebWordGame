@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Game;
 
-use App\Models\Game;
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CreateController extends BaseController
 {
-    public function __invoke()
+    public function __invoke(): View
     {
-        // TODO: Implement __invoke() method.
+        return view('game.create');
     }
 }

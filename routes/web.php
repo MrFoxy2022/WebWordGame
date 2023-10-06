@@ -17,10 +17,13 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('/create-game', function () {
-    return view('game.create');
-});
+Route::group(['middleware' => ['web'], 'namespace' => 'App\Http\Controllers\Game'], function () {
+    Route::get('/games', 'IndexController')->name('game.index');
+    Route::get('/games/create', 'CreateController')->name('game.create');
+    Route::get('/games/{game}', 'ShowController')->name('game.show');
 
-Route::get('/find-game', function () {
-    return view('game.find');
+    Route::post('/game/verify/{id}', 'VerifyController')->name('game.verify');
+    Route::post('/game/check', 'CheckController')->name('game.check');
+
+    Route::post('/games', 'StoreController')->name('game.store');
 });
