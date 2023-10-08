@@ -1,13 +1,14 @@
 const word_length = document.getElementById('game') ? document.getElementById('game').dataset.length : 0;
 const word_attempts = document.getElementById('game') ? document.getElementById('game').dataset.attempts : 0;
 const game_id = document.getElementById('game') ? document.getElementById('game').dataset.id : 0;
-const win_text = document.getElementById('win_text');
+//const win_text = document.getElementById('win_text');
 const password_view = document.getElementById('password_view');
 const private_lobby = document.getElementById('private_lobby');
+const copy_game = document.getElementById('copy_game');
 
 let current_word = '';
 
-const win = function (idx){
+/*const win = function (idx){
     for (let i = 0; i < word_attempts; i++) {
         for (let j = 0; j < word_length; j++) {
             let id = i * word_length + j + 1;
@@ -21,7 +22,7 @@ const win = function (idx){
             letter_el.disabled = true;
         }
     }
-}
+}*/
 
 const sendJson = function (link, body = null){
     let xhr = new XMLHttpRequest();
@@ -75,8 +76,8 @@ if (word_attempts) {
                                 j++;
                                 letter_el.disabled = true;
                             }
-                        } else if (result.data.status === 'win') {
-                            win(id);
+                        } else if (result.data.status === 'win' || result.data.status === 'lose') {
+                            location.reload();
                         }
                     }
                     letter_el_now.value = letter;
@@ -104,4 +105,8 @@ private_lobby && (private_lobby.onchange = () => {
     else {
         password_view.classList.add('d-none');
     }
+});
+
+copy_game && (copy_game.onclick = () => {
+    navigator.clipboard.writeText(copy_game.dataset.link).then(() => {});
 });

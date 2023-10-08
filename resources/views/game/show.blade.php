@@ -14,8 +14,14 @@
                 <button type="submit" class="btn btn-dark" style="width: 100%; font-size: 20px;">Verify</button>
             </form>
         @else
-            <h1 id="win_text" class="text-center text-success {{ $game->status && $result ? '' : 'd-none' }}">YOU WIN</h1>
-            <h1 id="win_text" class="text-center text-danger {{ $game->status && $result && $game->attempts == $game->attempt ? '' : 'd-none' }}">YOU LOST</h1>
+            @if($game->status)
+                @if($game->attempt < $game->attempts || in_array(strtoupper($game->word), $history))
+                    <h1 id="win_text" class="text-center text-success">YOU WIN</h1>
+                @else
+                    <h1 id="win_text" class="text-center text-danger">YOU LOST</h1>
+                @endif
+                <h3 class="text-center">The hidden word - <a href="https://en.wikipedia.org/wiki/{{ $game->word }}">{{ $game->word }}</a></h3>
+            @endif
             @if($result)
                 <div id="game" class="mobile-game" data-id="{{ $game->id }}" data-length="{{ strlen($game->word) }}" data-attempts="{{ $game->attempts }}" style="margin: 50px auto;width: 50%;">
                     @for($i = 0; $i < $game->attempts; $i++)

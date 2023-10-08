@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 
 class Service
 {
-    public function store($data): void
+    public function store($data): int
     {
         $data['private_lobby'] = isset($data['private_lobby']);
         $data['letter_hints'] = isset($data['letter_hints']);
@@ -23,7 +23,9 @@ class Service
             $data['password'] = null;
         }
 
-        Game::create($data);
+        $game = Game::create($data);
+
+        return $game->id;
     }
 
     public function occupyGame(Request $request, Game $game, $verified): array
@@ -62,14 +64,16 @@ class Service
         $game = Game::findOrFail($data['id']);
         $word = strtoupper($game->word);
 
-        if ($game->attempt == $game->attempts) {
-            $data['status'] = 'error';
+        if ($word == $data['word']) {
+            $data['status'] = 'win';
             $game->update([
-                'status' => true
+                'status' => true,
+                'attempt' => $game->attempt + 1,
+                'history' => $game->getHistory($data['word'])
             ]);
         }
-        else if ($word == $data['word']) {
-            $data['status'] = 'win';
+        else if ($game->attempt == $game->attempts - 1) {
+            $data['status'] = 'lose';
             $game->update([
                 'status' => true,
                 'attempt' => $game->attempt + 1,

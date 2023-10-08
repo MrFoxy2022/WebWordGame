@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
         return [
             'game_name' => 'required|unique:games|string|min:2|max:20',
             'word' => 'required|string|min:2|max:20',
-            'attempts' => 'required|integer|min:0|max:10',
+            'attempts' => 'required|integer|min:1|max:10',
             'private_lobby' => '',
             'letter_hints' => '',
             'password' => '',

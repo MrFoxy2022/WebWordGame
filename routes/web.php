@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web'], 'namespace' => 'App\Http\Controllers\Game'], function () {
     Route::get('/games', 'IndexController')->name('game.index');
     Route::get('/games/create', 'CreateController')->name('game.create');
+    Route::get('/games/bot', 'BotController')->name('game.bot');
     Route::get('/games/{game}', 'ShowController')->name('game.show');
 
     Route::post('/game/verify/{id}', 'VerifyController')->name('game.verify');

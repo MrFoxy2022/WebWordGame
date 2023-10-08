@@ -1,7 +1,12 @@
 @extends('layouts.layout')
 @section('content')
     <div class="container">
-        <h1 style="margin-top: 100px;">Public Games</h1>
+        <h1 style="margin-top: 100px;">Play with bot</h1>
+        <a href="{{ route('game.bot') }}"><button class="btn btn-dark" style="font-size: 20px; width: 20%;">Play</button></a>
+        <h1 style="margin-top: 20px;">Public Games</h1>
+        @if(count($games) == 0)
+            <a href="/games/create" style="font-size: 20px; text-decoration: none; color: deepskyblue">Oops. It looks like no one created the game, be the first!</a>
+        @endif
         <div>
             @foreach($games as $game)
                 <a href="/games/{{ $game->id }}" style="text-decoration: none;">

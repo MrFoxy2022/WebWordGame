@@ -10,8 +10,8 @@ class StoreController extends BaseController
     {
         $data = $request->validated();
 
-        $this->service->store($data);
+        $id = $this->service->store($data);
 
-        return redirect()->route('game.index');
+        return redirect('/games/create?status=success&id='.$id);
     }
 }
