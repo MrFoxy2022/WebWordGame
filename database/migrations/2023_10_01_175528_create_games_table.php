@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('game_name', 20)->unique();
+            $table->string('game_name', 50)->unique();
             $table->string('password')->nullable();
             $table->string('word', 20);
             $table->integer('attempts')->default(5);
